@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="myfile">
+    <select name="dropdown">
+      <option value="blur">BLUR</option>
+      <option value="contour">CONTOUR</option>
+      <option value="detail">DETAIL</option>
+      <option value="edge enhance">EDGE ENHANCE</option>
+      <option value="edge enhance more">EDGE ENHANCE MORE</option>
+      <option value="emboss">EMBOSS</option>
+      <option value="find edges">FIND EDGES</option>
+      <option value="smooth">SMOOTH</option>
+      <option value="smooth more">SMOOTH MORE</option>
+      <option value="sharp">SHARPEN</option>
+    </select>
+    <button type="submit">Upload</button>
+  </form>
+
+  {% if uploaded_file_url %}
+    <p>Original Image</p>
+    <a href="{{uploaded_file_url}}" download="myimage"><img height=300px width=300px src="{{uploaded_file_url}}" /></a>
+    <p>Filtered Image</p>
+    <a href="media/filtered/out.jpg" download="myimage1"><img height=300px width=300px src="media/filtered/out.jpg" /></a>
+  {% endif %}
+
+
+{% endblock %}
