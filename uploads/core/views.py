@@ -19,7 +19,7 @@ def simple_upload(request):
         ph = im.open(myfile)
         if fil_type == 'blur':
             phout = ph.filter(imf.BLUR)
-        if fil_type == 'contourr':
+        if fil_type == 'contour':
             phout = ph.filter(imf.CONTOUR)
         if fil_type == 'detail':
             phout = ph.filter(imf.DETAIL)
